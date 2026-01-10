@@ -1,9 +1,15 @@
-import Register from "./pages/resister";
-function App() {
-  return (
-<div>
-  <Register/>
-</div>
-)}
+import AuthPage from "./pages/AuthPage";
 
-export default App;
+import React from 'react'
+
+const App = () => {
+  return (
+    <div>
+     <AuthPage />;
+    </div>
+  )
+}
+
+export default App
+
+
