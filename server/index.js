@@ -5,6 +5,8 @@ const cors = require("cors");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const testRoutes = require("./routes/testRoutes");
+const userRoutes = require("./routes/userRoutes");
+
 
 const app = express();
 
@@ -18,6 +20,9 @@ app.use(express.json());
 // ✅ ROUTES AFTER MIDDLEWARE
 app.use("/api/auth", authRoutes);
 app.use("/api", testRoutes);
+
+app.use("/api/users", userRoutes);
+
 
 // ROOT CHECK
 app.get("/", (req, res) => {
