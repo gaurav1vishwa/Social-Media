@@ -1,12 +1,29 @@
 import { useState } from "react";
+import API from "../services/api";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
+  const { login } = useAuth(); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("LOGIN DATA:", { email, password });
+    setError("");
+
+    try {
+      const res = await API.post("/auth/login", {
+        email,
+        password,
+      });
+
+      // update AuthContext
+      login(res.data.user, res.data.token);
+
+    } catch (err) {
+      setError(err.response?.data?.message || "Login failed");
+    }
   };
 
   return (
@@ -18,6 +35,8 @@ const Login = () => {
         <h2 className="text-2xl font-bold text-white mb-6 text-center">
           Login
         </h2>
+
+        {error && <p className="text-red-400 mb-3">{error}</p>}
 
         <input
           type="email"
@@ -35,7 +54,10 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button className="w-full bg-blue-600 hover:bg-blue-700 text-white p-3 rounded">
+        <button
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white p-3 rounded"
+        >
           Login
         </button>
       </form>

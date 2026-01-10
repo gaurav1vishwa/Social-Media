@@ -39,7 +39,7 @@ const Register = () => {
         <input
           type="text"
           placeholder="Name"
-          className="w-full p-3 mb-3 rounded bg-gray-700 text-white"
+          className="w-full p-3 mb-3 rounded bg-gray-600 text-white"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -47,7 +47,7 @@ const Register = () => {
         <input
           type="email"
           placeholder="Email"
-          className="w-full p-3 mb-3 rounded bg-gray-700 text-white"
+          className="w-full p-3 mb-3 rounded bg-gray-600 text-white"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -55,12 +55,12 @@ const Register = () => {
         <input
           type="password"
           placeholder="Password"
-          className="w-full p-3 mb-5 rounded bg-gray-700 text-white"
+          className="w-full p-3 mb-5 rounded bg-gray-600 text-white"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button className="w-full bg-green-600 hover:bg-green-700 text-white p-3 rounded">
+        <button className="w-full bg-green-600 hover:bg-green-700 cursor-pointer text-white p-3 rounded">
           Register
         </button>
       </form>
