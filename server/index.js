@@ -13,11 +13,11 @@ const app = express();
 // CONNECT DATABASE
 connectDB();
 
-// ✅ MIDDLEWARES FIRST
+// MIDDLEWARES FIRST
 app.use(cors());
 app.use(express.json());
 
-// ✅ ROUTES AFTER MIDDLEWARE
+// ROUTES AFTER MIDDLEWARE
 app.use("/api/auth", authRoutes);
 app.use("/api", testRoutes);
 
